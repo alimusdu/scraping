@@ -5,7 +5,7 @@ import time
 
 filename = time.strftime("%Y%m%d%H%M")
 
-f = open('output/'+filename+'.csv', 'w')
+f = open('output/'+filename+'.csv', 'w', newline='\n')
 with f:
     fnames = ['Name', 'Symbol', 'Last', 'High', 'Low', 'Vol', 'Mcap']
     writer = csv.DictWriter(f, fieldnames=fnames)
@@ -58,7 +58,7 @@ for i in range(1, 6):
                 if row[0] == symbolname:
                     symbol = row[1]
         
-        f = open('output/'+filename+'.csv', 'a')
+        f = open('output/'+filename+'.csv', 'a', newline='\n')
         with f:
             fnames = ['Name', 'Symbol', 'Last', 'High', 'Low', 'Vol', 'Mcap']
             writer = csv.DictWriter(f, fieldnames=fnames)
