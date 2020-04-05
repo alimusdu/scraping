@@ -42,7 +42,10 @@ for i in range(1, 6):
     fpage = requests.get(fURL, headers=fheaders)
     ftree = html.fromstring(fpage.content)
     
-    for order in range(1, 601):
+    count = tree.xpath('//*[@id="cr1"]/tbody/tr')
+    countnum = (len(count)) + 1
+    
+    for order in range(1, countnum):
         name = tree.xpath('//*[@id="cr1"]/tbody/tr[%s]/td[2]' % order)[0].text_content()
         last = tree.xpath('//*[@id="cr1"]/tbody/tr[%s]/td[3]' % order)[0].text_content()
         high = tree.xpath('//*[@id="cr1"]/tbody/tr[%s]/td[4]' % order)[0].text_content()
