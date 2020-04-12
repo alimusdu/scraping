@@ -76,7 +76,7 @@ def thread_function(market):
             vol = tree.xpath('//*[@id="cr1"]/tbody/tr[%s]/td[8]' % order)[0].text_content()
             mcap = ftree.xpath('//*[@id="fundamental"]/tbody/tr[%s]/td[4]' % order)[0].text_content()
             symbol = None
-            with open(''+market+'-symbols.csv') as csvDataFile:
+            with open(''+market+'-symbols.csv', encoding='utf-8') as csvDataFile:
                 csvReader = csv.reader(csvDataFile)
                 for row in csvReader:
                     if row[0] == name:
@@ -89,7 +89,7 @@ def thread_function(market):
                 detail = requests.get(MainURL + href, headers=headers)
                 detailtree = html.fromstring(detail.content)
                 symbol = detailtree.xpath('//meta[@itemprop="tickerSymbol"]/@content')[0]
-                f = open(''+market+'-symbols.csv', 'a')
+                f = open(''+market+'-symbols.csv', 'a', newline='\n')
                 with f:
                     fnames = ['Name', 'Symbol']
                     writer = csv.DictWriter(f, fieldnames=fnames)
