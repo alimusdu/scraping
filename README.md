@@ -9,3 +9,7 @@ cd scraping
 Req : Python3.x
 
 pip/pip3 install -r requirements.txt
+
+#Run Scraping script
+
+python/python3 investing.py
